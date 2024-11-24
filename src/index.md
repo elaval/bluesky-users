@@ -46,7 +46,7 @@ const chart = Plot.plot({
 })
 ```
 
-<h1> Bluesky users since Nov 21 2024</h2>
+<h1> Bluesky users since Nov 22 2024</h2>
 Last update at ${_.last([...dataPlot])["date"]}
 <div class="card">
     ${chart}
