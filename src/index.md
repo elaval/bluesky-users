@@ -91,7 +91,7 @@ const chartArchive = Plot.plot({
   x:{type:"time", grid:true},
   y:{type:"log",tickFormat: ".1s", grid:true, label: "Total users (log scale)"},
   marks: [
-      Plot.ruleY([5000000, 10000000, 20000000], { strokeDasharray: "1" }),
+      Plot.ruleY([1000000, 5000000, 10000000, 20000000], { strokeDasharray: "1" }),
       Plot.lineY(dataPlotArchive, {
         x: "date",
         y: "users",
