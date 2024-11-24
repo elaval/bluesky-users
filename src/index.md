@@ -18,16 +18,30 @@ const dataPlot = _.chain([...data])
     .value();
 
 const chart = Plot.plot({
+  marginRight:70,
 
   x:{type:"time", grid:true},
   y:{tickFormat: ".1s", grid:true},
   marks: [
-    Plot.lineY(dataPlot, {x:"date", y:"users", tip:true})
+    Plot.lineY(dataPlot, {
+      x:"date", 
+      y:"users", 
+      tip:true,
+      title:d => `${d3.format(",")(d.users)}\n${d.date}`
+      }),
+    Plot.text(dataPlot, Plot.selectLast({
+      x:"date", 
+      y:"users", 
+      text:"users",
+      textAnchor:"start",
+      dx:5
+      })),
   ]
 })
 ```
 
 <h1> Bluesky users </h2>
+Last review at ${_.last([...dataPlot])["date"]}
 <div class="card">
     ${chart}
 </div>
