@@ -135,7 +135,7 @@ const chartArchive = Plot.plot({
 })
 ```
 
-<h1> Historic growth of Bluesky first 20 Million users (log scale)</h2>
+<h1> Bluesky's first 20 Million users (log scale)</h2>
 <div class="card">
     ${chartArchive}
 </div>
