@@ -50,6 +50,14 @@ const chart = Plot.plot({
 Last update: ${_.last([...dataPlot])["date"]}
 <div class="card">
     ${chartIntegrated}
+    <div class="muted">
+    <p></p>
+Data Sources:
+<ul>
+<li>Current user counts sourced from a regularly updated time series maintained by @elaval.bsky.social since November 22, 2024, using an API by Theo Sanderson. <br> 
+<li>Historical data derived from Web Archive snapshots of Jaz’s bsky stats.
+</ul>
+    </div>
 </div>
 
 
@@ -148,7 +156,6 @@ const event_x_blocked = dataPlotIntegrated.find(
 
 const chartIntegrated = Plot.plot({
   marginRight:70,
-  caption: "Data source: User count time series updated regularly by @elaval.bsky.social since Nov 22, 2024,  using API created by Theo Sanderson (https://bsky.app/profile/theo.io). Historical datapoints from Web Archive snaphots of Jaz's bsky stats (https://bsky.jazco.dev/stats).",
   x:{type:"time", grid:true},
   y:{type:"linear",tickFormat: ".1s", grid:true, label: "Total users", domain:[0, 27000000]},
   marks: [
