@@ -47,7 +47,8 @@ const chart = Plot.plot({
 ```
 
 ## Bluesky Users Since Nov 22, 2024
-Last update: ${_.last([...dataPlot])["date"]}
+Last update: ${_.last([...dataPlot])["date"]}  
+Last report: **${d3.format(",")(_.last([...dataPlot])["users"])} users** 
 <div class="card">
     ${chart}
 </div>
