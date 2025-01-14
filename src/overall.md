@@ -154,8 +154,15 @@ const event_x_blocked = dataPlotIntegrated.find(
 );
 
 
+const event_meta_factchecking = dataPlotIntegrated.find(
+  (d) => d.date >= new Date("2025-01-07")
+);
+
+
+
 const chartIntegrated = Plot.plot({
   marginRight:70,
+  marginTop:50,
   x:{type:"time", grid:true},
   y:{type:"linear",tickFormat: ".1s", grid:true, label: "Total users", domain:[0, 27000000]},
   marks: [
@@ -186,6 +193,11 @@ const chartIntegrated = Plot.plot({
             date: event_elections["date"],
             users: event_elections["users"],
             text: "US elections"
+          },
+          {
+            date: event_meta_factchecking["date"],
+            users: event_meta_factchecking["users"],
+            text: "Meta ends factchecking"
           }
         ],
         { x: "date", y: "users", title: "text", anchor: "bottom-right" }
