@@ -163,6 +163,7 @@ const event_meta_factchecking = dataPlotIntegrated.find(
 const chartIntegrated = Plot.plot({
   marginRight:70,
   marginTop:50,
+  caption:"Chart author: @elaval.bsky.social",
   x:{type:"time", grid:true},
   y:{type:"linear",tickFormat: ".1s", grid:true, label: "Total users", domain:[0, 27000000]},
   marks: [
