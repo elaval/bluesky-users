@@ -25,7 +25,7 @@ const dataPlot = _.chain([...data])
 
 const chart = Plot.plot({
   marginRight:70,
-
+  caption:"Chart author: @elaval.bsky.social",
   x:{type:"time", grid:true},
   y:{tickFormat: ".1s", grid:true},
   marks: [
@@ -88,7 +88,7 @@ const event_x_blocked = dataPlotArchive.find(
 
 const chartArchive = Plot.plot({
   marginRight:70,
-
+  caption:"Chart author: @elaval.bsky.social",
   x:{type:"time", grid:true},
   y:{type:"log",tickFormat: ".1s", grid:true, label: "Total users (log scale)"},
   marks: [
