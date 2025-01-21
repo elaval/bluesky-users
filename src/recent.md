@@ -33,7 +33,6 @@ const analysis = _.chain([...data])
   prev = d;
 })
 .value()
-display(tasa)
 ```
 
 ```js
@@ -43,7 +42,7 @@ const dataPlot = _.chain([...data])
       users: d.users
     }))
     .sortBy((d) => d.date)
-    .slice(-24*7)
+    .slice(-24*14)
     .value();
 
 const chart = Plot.plot({
