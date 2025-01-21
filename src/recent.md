@@ -15,6 +15,28 @@ FROM archive_data
 ```
 
 ```js
+
+let prev = null;
+const tasa = []
+const analysis = _.chain([...data])
+.each(d => {
+  if (prev) {
+    const diffSeconds = moment(d.timestamp).diff(moment(prev.timestamp), "seconds")
+    const diffUsers = d.users - prev.users
+    tasa.push({
+      timestamp: d.timestamp,
+      diffTime: diffSeconds,
+      diffUsers:diffUsers,
+      tasa: diffUsers / diffSeconds
+    })
+  }
+  prev = d;
+})
+.value()
+display(tasa)
+```
+
+```js
 const dataPlot = _.chain([...data])
     .map((d) => ({
       date: moment.utc(d["timestamp"]).toDate(),
@@ -48,12 +70,52 @@ const chart = Plot.plot({
 })
 ```
 
+
+```js
+const dataPlotTasa = _.chain(tasa)
+    .map((d) => ({
+      date: moment.utc(d["timestamp"]).toDate(),
+      tasa: d.tasa
+    }))
+    .sortBy((d) => d.date)
+    .slice(-24*14)
+    .value();
+
+const chartTasa = Plot.plot({
+  marginLeft:70,
+  marginRight:70,
+  caption:"Chart author: @elaval.bsky.social",
+  x:{type:"time", grid:true},
+  y:{tickFormat: ".1s", grid:true, type:"linear", label:"Rate of new users per second"},
+  marks: [
+    Plot.lineY(dataPlotTasa, {
+      x:"date", 
+      y:"tasa", 
+      tip:true,
+      title:d => `${d3.format(",")(d.tasa)}\n${d.date}`
+      }),
+    Plot.text(dataPlotTasa, Plot.selectLast({
+      x:"date", 
+      y:"users", 
+      text:"users",
+      textAnchor:"start",
+      dx:5
+      })),
+  ]
+})
+```
+
 ## Bluesky Users Since ${moment(dataPlot[0].date).format("DD MMM YYYY")}
 Last update: ${_.last([...dataPlot])["date"]}  
 Last report: **${d3.format(",")(_.last([...dataPlot])["users"])} users** 
 <div class="card">
     ${chart}
 </div>
+
+<div class="card">
+    ${chartTasa}
+</div>
+
 
 ### Data Sources and Updates
 The data presented on this webpage is compiled and updated regularly (approximately every hour) from the following sources and tools:
