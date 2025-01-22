@@ -48,7 +48,9 @@ const dataPlot = _.chain([...data])
 const chart = Plot.plot({
   marginLeft:70,
   marginRight:70,
-  caption:"Chart author: @elaval.bsky.social",
+  title: "Total number of Bluesky users",
+
+  caption:"Chart author: (@elaval.bsky.social)[https://bsky.app/profile/elaval.bsky.social]",
   x:{type:"time", grid:true},
   y:{tickFormat: ".1s", grid:true, type:"linear"},
   marks: [
@@ -83,6 +85,7 @@ const dataPlotTasa = _.chain(tasa)
 const chartTasa = Plot.plot({
   marginLeft:70,
   marginRight:70,
+  title: "Rate of new Bluesky users",
   caption:"Chart author: @elaval.bsky.social",
   x:{type:"time", grid:true},
   y:{tickFormat: ".1s", grid:true, type:"linear", label:"Rate of new users per second"},
