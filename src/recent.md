@@ -3,6 +3,13 @@ sql:
   data_users: data/users.parquet
   archive_data: data/archive_data.json
 ---
+```js
+function isFirefox() {
+    return navigator.userAgent.includes("Firefox");
+}
+```
+${isFirefox() ? html`<div style="background-color:yellow">Nota: Se han reportado errores al usar <b>Firefox</b>.  Si la página arroja errores, por favor intentar con otro navegador </div>`: ``}
+
 
 ```sql id=data
 SELECT *
@@ -55,8 +62,6 @@ const analysis24h = _.chain([...data])
   //display([i,prev])
 })
 .value()
-
-display(tasa24h)
 ```
 
 ```js
