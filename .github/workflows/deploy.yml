@@ -36,7 +36,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v3.2.0 # Ensure you're using the latest patch version
+        uses: actions/configure-pages@v5.0.0 # Ensure you're using the latest patch version
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v2 # Updated from v1 to v2
         with:
