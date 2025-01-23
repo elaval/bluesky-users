@@ -38,10 +38,10 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5.0.0 # Ensure you're using the latest patch version
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v2 # Updated from v1 to v2
+        uses: actions/upload-pages-artifact@v3 # Updated from v1 to v2
         with:
           path: dist
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1.1.0 # Ensure you're using the latest patch version
+        uses: actions/deploy-pages@v4 # Ensure you're using the latest patch version
 
